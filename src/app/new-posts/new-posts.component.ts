@@ -25,18 +25,18 @@ export class NewPostsComponent implements OnInit{
       this.id = id;
       if (this.id) {
         this.mainTitle = 'Редактировать пост';
+        this.http.get<Post>(`https://plovo-13-default-rtdb.firebaseio.com/posts/${id}.json`)
+          .pipe(map(post => {
+            console.log(post);
+            return new Post(post.id, post.data, post.title, post.text);
+          }))
+          .subscribe(post => {
+            this.title = post.title;
+            this.text = post.text
+          });
       } else {
         this.mainTitle = 'Добавить новый пост';
       }
-      this.http.get<Post>(`https://plovo-13-default-rtdb.firebaseio.com/posts/${id}.json`)
-        .pipe(map(post => {
-          console.log(post);
-          return new Post(post.id, post.data, post.title, post.text);
-        }))
-        .subscribe(post => {
-          this.title = post.title;
-          this.text = post.text
-        });
     });
   }
 
