@@ -7,7 +7,8 @@
         <p>{{ post.title }}</p>
       </blockquote>
       <p>{{ post.text }}</p>
-      <button class="bg-dark text-white">Read more</button>
+      <button class="btn bg-danger mr-5" (click)="onDelete()">Delete</button>
+      <button class="btn bg-success" routerLink="/posts/{{ id }}/edit">Edit</button>
     </div>
 </div>
 
