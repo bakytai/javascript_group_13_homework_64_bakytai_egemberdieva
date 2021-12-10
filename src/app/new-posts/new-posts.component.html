@@ -1,0 +1,16 @@
+<h2 class="text-uppercase m-3" style="color: #00587c;">Добавить новый пост</h2>
+<form (ngSubmit)="createPost()" class="col-3">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" class="form-control" [(ngModel)]="title"/>
+  </div>
+  <div class="form-group">
+    <label for="text">Post</label>
+    <textarea name="text" id="text" class="form-control" [(ngModel)]="text"></textarea>
+  </div>
+  <button
+    type="submit"
+    class="btn text-white bg-dark"
+  >Добавить
+  </button>
+</form>
