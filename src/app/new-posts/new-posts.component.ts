@@ -49,10 +49,10 @@ export class NewPostsComponent implements OnInit{
 
     if (this.id) {
       this.http.put(`https://plovo-13-default-rtdb.firebaseio.com/posts/${this.id}.json`, body).subscribe();
+      this.http.get<{[id: string]: Post}>('https://plovo-13-default-rtdb.firebaseio.com/posts.json').subscribe();
+      void this.routeService.navigate(['/']);
     } else {
       this.http.post('https://plovo-13-default-rtdb.firebaseio.com/posts.json', body).subscribe();
     }
-    this.http.get<{[id: string]: Post}>('https://plovo-13-default-rtdb.firebaseio.com/posts.json').subscribe();
-    void this.routeService.navigate(['/']);
   }
 }
